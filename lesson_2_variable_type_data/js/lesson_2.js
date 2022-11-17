@@ -129,5 +129,38 @@ console.log(typeof fruits);
 //! статическая и динамическая типизация
 //* СТАТИЧЕСКАЯ
 //Статическая тип данных присваивается при создании переменной изменить тип даных нельзя только через переопределение
-let String nameAutor = 'abcd';
+//String nameAutor = 'abcd';
+//nameAutor = 13; error
+// ! JS ДИНАМИЧЕСКИЙ 
+// ! в JS динамическая типизация можно присваивать одной и той же переменной значение разных типов
+let result = true;
+console.log(result);
+console.log(typeof result);
 
+result = 10;
+console.log(result);
+console.log(typeof result);
+
+result = 'Win Win';
+console.log(result);
+console.log(typeof result);
+
+// то же можо делать и с функциями в премере myFunction просто число
+function myFunction(){
+    console.log(result+' HO HO HO')
+}
+myFunction();
+myFunction =10;
+console.log(myFunction);
+console.log(typeof myFunction);
+
+//! Что бы избежать ошибок типизации CONST обьявление переменных
+// Стрелочная функция
+const resultNew = () =>{
+    console.log('Happy Cristmas');
+}
+resultNew();
+//! resultNew = 10: error получим ошибку
+//* правила переменных
+//? обьявлять их перед использованием
+//? использовать const при любой возможности и необходимости
