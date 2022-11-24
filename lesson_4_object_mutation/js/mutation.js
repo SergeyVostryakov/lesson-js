@@ -89,7 +89,7 @@ console.log(mysculCar3.model);
 //! КАК ИЗБЕЖАТЬ МУТАЦИЙ
 //* Вариант 3
 const mysculCar4 = JSON.parse(JSON.stringify(mysculCar));
-//* JSON.stringify конвертируем в строку JSON.stringify конвертируем снова в новый обьект
+//* JSON.stringify конвертируем в строку JSON.parse конвертируем снова в новый обьект
 mysculCar4.engine.liters = 5.0;
 console.log('полностью избежали мутаций');
 console.log(mysculCar.engine.liters);
