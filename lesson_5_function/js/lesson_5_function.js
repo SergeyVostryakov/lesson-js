@@ -55,6 +55,7 @@ function имя  (параметроы){ параметры передаются
 //* Объявление функции (function definition, или function declaration, или function statement) состоит из ключевого слова function и следующих частей:
 
 
+
 showMessage();//! вызывать функции можно как до обьявления так и после обьявления
 function showMessage(){
     console.log ('Message');
@@ -201,7 +202,9 @@ console.log (messageOne);
 //! В функцию можно передавать некие параметры их еще называют АРГУМЕНТЫ функции
 //* аргумеенты указываются в скобках перечесляются через запятую(если их дольше одного) 
 
-function calcNumber(numOne=4, numTwo=5){// можно не передавать значения по умолчанию (numOne, numTwo)
+function calcNumber(numOne=4, numTwo=5){
+    // можно не передавать значения по умолчанию (numOne, numTwo)
+    // можно передать дефолтное значение только одному параметру (numOne=4, numTwo)
     console.log (`Преременная numOne:${numOne}`);
     console.log (`Преременная numTwo:${numTwo}`);
 
@@ -213,6 +216,64 @@ function calcNumber(numOne=4, numTwo=5){// можно не передавать 
 calcNumber(50, 44);
 console.log ('Вычисления со значениями по умолчанию');
 calcNumber();
+
+//* значение параметров функции по умолчанию боле сложная конструкция
+
+const newPost = (post, addedAt = Date()) =>({
+    ...post,
+    addedAt
+});
+const patternPost = {
+    id: 1,
+    autor: 'Nick'
+};
+
+const showPost = console.log(newPost(patternPost));
+/*
+разбор кода
+1. обьявили переменную const newPost 
+2. с помощью стрелочной функции присваиваем значение переменной  newPost
+3. у функции два параметра post и  addedAt
+функция Date() передаст в параметр addedAt текущую дату
+4. у параметра addedAt дефолтное значение всегда присваивается текущая дата ВАЖНО (в момент вызова функции присваивается новая дата)
+5. внутри выражения 
+    ...post создаем новый обьект 
+    addedAt добавляем ему новое свойство 
+addedAt присваивается текущая дата как описано выше в параметрах
+6. ({ неявный возврат обьекта в функции})
+7. создали обьект patternPost
+const patternPost = {
+    id: 1,
+    autor: 'name'
+};
+8. newPost(patternPost)
+    вызвали функцию newPost передали только один пароаметр patternPost 
+    addedAt второй аргумент (параметр) отсутствует, функция Date() передаст в параметр addedAt текущую дату
+*/
+//* явное приведение обьекта
+
+console.log('явное приведение обьекта');
+const newPostTwo = (post, addedAt = Date()) =>{
+    myPost = {
+        ...post,
+        autor: 'Mike',
+        addedAt
+    }
+    return myPost;
+};
+console.log(newPostTwo(patternPost));
+/*
+//* Сокращенный формат записи свойств
+const nameUserTwo='Evgeniy';
+const userAgeTwo = 37;
+const userTwoDate = {
+    nameUserTwo,
+    userAgeTwo, //! ВАЖНО Короткие записи всегда сверху потом все остальные
+    married: true,
+    sex:'man' //? все последующие записи (для удобства чтения данных)
+}
+*/
+
 
     //! ФУНКЦИИ-КОЛБЭК
 
@@ -269,37 +330,63 @@ function getSum(){
 //! ФУНКЦИОНАЛЬНОЕ ВЫРАЖЕНИЕ(Function Expression)
 
 
-let showMassageExample = function () {
+const showMassageExample = function () {
     console.log('Привет!');
 };
 showMassageExample();//* функцию обьявленную с помощью Function Expression можно вызвать только после обьявления
 
-//! arrow function
+/*
+                    обьявленная функция     функциональное выражение
+                    Function declaration    Function Expression
+
+имеет имя           да                      нет
+
+можно использовать  да                      нет
+автономно           
+
+Можно присваивать   да                      да
+переменной
+
+можно использовать  да                      да
+как аргумент в 
+вызове другой функции
+
+*/
+
+
+//! СТРЕЛОЧНАЯ ФУНКЦИЯ  arrow function
 /*
 arrow function
+СТРЕЛОЧНАЯ ФУНКЦИЯ - выражение
+всегда анонимна
+для того что бы дать имя стрелочной функции надо присвоить переменной
+
 let имя переменной = ( параметр, ....параметр) => выражение;
 
 Function Expression
 
-let имя переменной = function( параметр, ....параметр) {
+const имя переменной = function( параметр, ....параметр) {
     Инструкции 
     return выражение;
 }
-
 */
+
 //* ОДНОСТРОЧНАЯ СТРЕЛОЧНАЯ ФУНКЦИЯ 
 
-let getStitchedText = (text, user) => text + ', ' + user + '!';
+const getStitchedText = (text, user) => text + ', ' + user + '!';
 console.log(getStitchedText('Hello','Bob'));
+// использовать если функция состоит из одного выражения
 
 //* МНОГОСТРОЧНАЯ СТРЕЛОЧНАЯ ФУНКЦИЯ 
 // создание аналогично с той разницей что тело помещено в фигурные скобки
 
-let getStapledSentence = (text, name) => {
+const getStapledSentence = (text, name) => {
     let message = text + ', ' + name + '!';
     return message;//! ВАЖНО return ОБЯЗАТЕЛЕН
 };
 console.log(getStapledSentence('Hello','Mike'));
+
+
 
 //! ПЛАНИРОВАНИЕ ВЫЗОВА ФУНКЦИЙ setTimeout и setInterval
 
@@ -329,6 +416,12 @@ function planningShowMessage (name, number) {
     setTimeout(planningShowMessage, 5000, 'Alex', 21); //*рекурсия
 }
 setTimeout(planningShowMessage, 5000, 'Alex', 21);//! такой подход дает более точную задержку
+
+//* setTimeout записанный через стрелочную функцию
+setTimeout(()=>{
+    console.table('Сообшение')
+}, 5000);
+
 
 //? ОСтановка setTimeout через цикл
 
