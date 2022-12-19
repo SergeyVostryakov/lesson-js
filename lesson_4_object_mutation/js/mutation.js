@@ -262,3 +262,121 @@ for (let key in engineOperatorForIn.yearOfProduction) {
     // значение ключей
     console.log(engineOperatorForIn.yearOfProduction[key]);
 }
+
+//! МЕТОДЫ ОБЬЕКТА
+
+const metodObjekt = {
+    liters : 4.0,
+    countCylinders: 6,
+    yearOfProduction: {
+        year: 1970,
+        month: 'March'
+    },
+/*
+ДЛИННАЯ ЗАПИСЬ
+        showInfo: function () {
+        console.log(`Двигатель обьемом ${metodObjekt.liters} литра, ${metodObjekt.countCylinders} цилиндров, ${metodObjekt.yearOfProduction.year} года выпуска`)
+    }
+    более короткая запись кода того же свойства
+*/
+    showInfo () {
+    console.log(`Двигатель обьемом ${metodObjekt.liters} литра, ${metodObjekt.countCylinders} цилиндров, ${metodObjekt.yearOfProduction.year} года выпуска`)
+}
+
+}
+metodObjekt.showInfo();
+
+/*
+Использование this в методах обьекта 
+словом this можно заменить текуший обьект 
+metodAndThis.liters 
+this.liters
+this более уневерсален мо точно знаем что обращаемся к свойству нашего обьекта
+если будут внесены новые данные код отработает стабильно 
+так же если код будет отрабатывать при вложености как в примере ниже через стрелочную функцию
+*/
+
+// тот же кож записан с использованием this  
+const metodAndThis = {
+    liters : 4.0,
+    countCylinders: 6,
+    yearOfProduction: {
+        year: 1970,
+        month: 'March'
+    },
+    showInfo () {
+        
+            console.log(`Двигатель обьемом ${this.liters} литра, ${this.countCylinders} цилиндров, ${this.yearOfProduction.year} года выпуска`)
+}
+}
+metodAndThis.showInfo();
+
+// This вложенная функция и её запись в виде стрелочной функции
+/*
+при таком написании кода мы получаем ошибку, 
+так как функция show обращается к родителю showinfo
+а у showinfo нет значений liters итд. они есть только у обьекта metodAndThisArrow
+
+что бы код заработал код необходимо обьявить show через синтаксис стрелочной функции.
+
+у стрелочной функции нет своего this 
+использоватся будет значение из внешнего источника metodAndThisArrow.showInfo();
+
+const metodAndThisArrow = {
+    liters : 4.0,
+    countCylinders: 6,
+    yearOfProduction: {
+        year: 1970,
+        month: 'March'
+    },
+    showInfo () {
+        show () {
+            console.log(`Двигатель обьемом ${this.liters} литра, ${this.countCylinders} цилиндров, ${this.yearOfProduction.year} года выпуска`)
+        }
+        show ();
+}
+}
+metodAndThisArrow.showInfo();
+*/
+
+const metodAndThisArrow = {
+    liters : 4.0,
+    countCylinders: 6,
+    yearOfProduction: {
+        year: 1970,
+        month: 'March'
+    },
+    showInfo () {
+        let show = () =>  console.log(`Двигатель обьемом ${this.liters} литра, ${this.countCylinders} цилиндров, ${this.yearOfProduction.year} года выпуска`)
+        show ();
+}
+}
+metodAndThisArrow.showInfo();
+
+//! ФУНКЦИЯ КОНСТРУКТОР
+
+/*
+Обычный синтаксис создания обьекта позволяет нам создать только один обьект.
+Но зачастую нам нужно создавать много однотипных обьектов.
+Это можно сделать при помощи оператора new 
+*/
+/*
+Функции конструкторы - являются обычными функциями 
+Но есть два отличия:
+1. Имя - должно начинатся с большой буквы
+2. Функция Конструктор вызывается при помощи оператора new 
+
+ */
+
+function UserInfo(name){
+    //this = {} создается пустой обьект(неявно автоматически )
+    this.name = name;
+    this.age = 39;
+}
+
+let createUserLena = new UserInfo('Лена');
+console.log(createUserLena);
+
+
+let createUserTim = new UserInfo('Timmy');
+console.log(createUserTim);
