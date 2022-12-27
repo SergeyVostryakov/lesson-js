@@ -306,6 +306,25 @@ function calcSummAndIf (numOne, numTwo, more, less) {
 }
 calcSummAndIf(1, 4, moreMessage, lessMessage);
 
+// Функции-колбэки
+function calcSumm(numOne, numTwo, more, less) {
+	let numSumm = numOne + numTwo;
+
+	if (numSumm > 3) {
+		more();
+	} else {
+		less();
+	}
+}
+
+function showMoreMessage() {
+	console.log('Больше чем 3');
+}
+function showLessMessage() {
+	console.log('Меньше чем 3');
+}
+calcSumm(1, 1, showMoreMessage, showLessMessage);
+
 //! ФУНКЦИОНАЛЬНОЕ ВЫРАЖЕНИЕ (Function Expression)
 //* обьявляется переменная в которой обьявляется функция без имени 
 //! в конце обязательно поставить ;
