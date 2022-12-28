@@ -123,3 +123,39 @@ declareVariable();
 
 //! СТРОГИЙ РЕЖИМ
 // в начале кода 'use strict'
+
+//====================================================
+//! ОБРАБОТКА ОШИБОК
+
+/*
+Выполнение кода после возникновения ошибки прикращается
+для того что бы ошибка не влияла на выполнение кода, 
+используется try catch
+
+! синтаксис 
+try {
+    код в котором возможно возникновение ошибки
+} catch (error) { //(error)параметр
+    код который должен выполнятся в случае если в блоке выше есть ошибка
+    (в первом блоке)
+}
+
+const fnWithError = () => {
+    throw new Error('Some error');
+}
+fnWithError();
+console.log('Continue...');
+
+*/
+const fnWithError = () => {
+    throw new Error('Some error');
+}
+
+try {
+    fnWithError()
+} catch (error) {
+    //console.error(error) для вывода ошибки
+    console.log(error.message)// для вывода сообщения 'Some error'
+    
+}
+console.log('Continue...');
