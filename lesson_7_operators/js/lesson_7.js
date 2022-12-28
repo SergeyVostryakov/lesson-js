@@ -141,27 +141,34 @@ console.log(typeof resultInvalid);
 //Унарный оператор сложения +
 
 //Со строками
-let resultOne = +"25";
-console.log(resultOne);
-console.log(typeof resultOne);
+let resultSummString = +"25";
+console.log(resultSummString);
+console.log(typeof resultSummString);
 
 //С числами
-let resultTwo = +10;
-console.log(resultTwo);
-console.log(typeof resultTwo);
+let sumNum = +10;
+console.log(sumNum);
+console.log(typeof sumNum);
 
 
 
 //Пример
-let users = "25";
-let admins = "10";
-console.log(users + admins);
+let stringNum = "25";
+let stringNum2 = "10";
+console.log(stringNum);
+console.log(typeof stringNum);
+console.log(stringNum + stringNum2);
+// конкатинация строк
 
-console.log(+users + +admins);
+console.log(+stringNum + +stringNum2);
+// в коде происходит приведение stringNum к числовому значению
 
 //Более длинная запись
-console.log(Number(users) + Number(admins));
-
+console.log(Number(stringNum) + Number(stringNum2));
+/* 
+в коде происходит приведение stringNum к числовому значению
+(или явным преобразованием типов).
+*/
 
 
 //============================================
@@ -170,47 +177,48 @@ console.log(Number(users) + Number(admins));
 //Приоритет операторов
 
 //Разный приоритет
-let resultOne = 2 - 1 * 5;
-console.log(resultOne);
+let calcNumber = 2 - 1 * 5;
+console.log(calcNumber);
 
 //Скобки
-let resultTwo = (2 - 1) * 5;
-console.log(resultTwo);
+let calcNumberStaples = (2 - 1) * 5;
+console.log(calcNumberStaples);
 
 //Одинаковый приоритет
-let resultThree = 2 - 1 + 5;
-console.log(resultThree);
+let equalPriority = 2 - 1 + 5;
+console.log(equalPriority);
 
 
 //============================================
-//Оператор присваивания
+
+//! ОПЕРАТОР ПРИСВАИВАНИЯ =
 
 let a = 1 + 2;
 let b = 2;
 
-let result = 8 - (a = b + 3);
+let calcVariable = 8 - (a = b + 3);
 console.log("Результат в скобках: " + a);
-console.log("Общий результат: " + result);
+console.log("Общий результат: " + calcVariable);
 
 //=====
 
 //Присваивание по цепочке
 
-let resultOne = resultTwo = resultThree = 1 + 2;
-console.log(resultOne);
-console.log(resultTwo);
-console.log(resultThree);
+let oneResult = twoResult = threeResult = 1 + 2;
+console.log(oneResult);
+console.log(twoResult);
+console.log(threeResult);
 
 
 //Более понятная запись
-let resultOne = 1 + 2;
+let resultSum = 1 + 2;
 
-resultTwo = resultOne;
-resultThree = resultOne;
+result1 = resultSum;
+result2 = resultSum;
 
-console.log(resultOne);
-console.log(resultTwo);
-console.log(resultThree);
+console.log(resultSum);
+console.log(result2);
+console.log(result1);
 
 
 
@@ -220,24 +228,27 @@ console.log(resultThree);
 //Сокращённая запись вычислений с присваиванием
 
 
-let users = 5;
-users = users + 3;
-users = users * 2;
+let countUsers = 5;
+console.log(countUsers);
+countUsers = countUsers + 3;
+console.log(countUsers);
+countUsers = countUsers * 2;
+console.log(countUsers);
 
 //Можно записать так:
 
-let users = 5;
-console.log(users);
-users += 3;
-console.log(users);
-users *= 2;
-console.log(users);
+let countAdmins = 5;
+console.log(countAdmins);
+countAdmins += 3;
+console.log(countAdmins);
+countAdmins *= 2;
+console.log(countAdmins);
 
 
-let users = 5;
-console.log(users);
-users += 1 + 2;
-console.log(users);
+let countPersons = 5;
+console.log(countPersons);
+countPersons += 1 + 2;
+console.log(countPersons);
 
 
 //============================================
@@ -272,9 +283,9 @@ console.log('decrementNum = ', decrementNum);     // 5
 /*
 Инкремент / декремент можно применить только к переменной.
 Попытка использовать его на значении, типа 5++, приведёт к ошибке.
-*/
-console.log(5++);
 
+console.log(5++);
+*/
 //==============
 
 /*
@@ -294,9 +305,9 @@ usersCounter--;
 //Примеры:
 
 //Постфиксная форма
-let usersCounter = 0;
-let newUsers = usersCounter++;
-console.log(newUsers);
+let countUsersApp = 0;
+let newUsersApp = countUsersApp++;
+console.log(newUsersApp);
 
 //Префиксная форма
 let usersCounter2 = 0;
@@ -637,8 +648,8 @@ console.log('15' && '42');
 
 
 //Подобие условия
-let users = 0;
-(users > 0) && console.log(`Пользователей ${users}`);
+let usersCount = 1;
+(usersCount > 0) && console.log(`Пользователей ${usersCount}`);
 
 
 //============================
@@ -688,15 +699,103 @@ let name = 'Фрилансер';
 console.log(name ?? "Без имени");
 
 
+//! ОПЕРАТОР ...
 
-//============================================
-//============================================
-
-//ДОМАШКА
 /*
-1. Изучить теорию
-2. Какой или какие из вариантов не верны:
+Оператор разделения обьекта на свойства
+Если у нас есть какой то обьект и мы хотим создать на его основе новый обьект
+плюс добавить к нему какие либо новые свойства.
+можно использовать оператор ... 
+*/ 
+const car = {
+	model: 'BMW',
+	engine: '4 litres'
+}
+console.log(car);
+console.table(car);
+
+const redCar = {
+	...car,
+	color: 'red'
+}
+console.log(redCar);
+console.table(redCar);
+
+// перезаписывание свойста
+const blueCar = {
+	...redCar,
+	color: 'blue'
+}
+console.log(blueCar);
+console.table(blueCar);
+
+const multiColorCar = {
+	color: 'black',
+	...blueCar,
+	
+}
+/*
+Свойство обьекта color: 'black' 
+перезапишется на color: 'blue'
+*/ 
+console.log(multiColorCar);
+console.table(multiColorCar);
+
+/*
+создание одного обьекта из двух
 */
+
+const muscleCar = {
+	color: 'black',
+	weight: 1.408,
+}
+const engineChrysler = {
+	liters: 5.2,
+	type: 'v8',
+} 
+const challenger = {
+	...muscleCar,
+	...engineChrysler,
+}
+console.table(muscleCar);
+console.table(engineChrysler);
+console.table(challenger);
+
+const muscleCar1 = {
+	color: 'black',
+	weight: 1.408,
+}
+const engineChrysler1 = {
+	liters: 5.2,
+	type: 'v8',
+	color: 'iron',
+} 
+const challenger1 = {
+	...muscleCar1,
+	...engineChrysler1,
+}
+console.table(muscleCar1);
+console.table(engineChrysler1);
+console.table(challenger1);
+/*
+создание одного обьекта из двух с одинаковым свойством
+свойство color: 'black' обьекта muscleCar1
+перезапишется на color: 'iron' обьекта engineChrysler1
+! ПОРЯДОК ИМЕЕТ ЗНАЧЕНИЕ
+*/
+
+
+// если у обьекта есть вложенные обьекты то смотреть тему мутации обьектов
+
+
+//============================================
+//============================================
+/*
+//ДОМАШКА
+
+//1. Изучить теорию
+//2. Какой или какие из вариантов не верны:
+
 
 //Вариант №1
 console.log('35' + - "22");
@@ -723,4 +822,4 @@ console.log(!false && 11 || 18 && !'');
 //Вариант №6
 let name = 0;
 console.log(name ?? "Без имени")
-
+*/
