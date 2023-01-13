@@ -310,7 +310,7 @@ console.log(number);
 console.log(typeof number);// предназначен для представления очень больших целых чисел
 
 // ! String
-let user = "Tom";
+let userName = "Tom";
 let company = 'Microsoft';
 let language = `JavaScript`;
 let varNext = 'Name user';// тип кавычек значения не имеет главное однообразие
