@@ -7,6 +7,9 @@
 Так же можно изменять их значение и перезаписывать
 */
 
+//-------------------------------------------
+
+//! ОБЬЯВЛЕНИЕ ПЕРЕМЕННОЙ
 /*
 ОБЬЯВЛЕНИЕ ПЕРЕМЕННОЙ
 1. ключевое слово let const или var
@@ -30,6 +33,7 @@
 
 ! var забываем практически не используется
 */
+
 //Верное обьявление переменной
 let age;
 let infoUser1;
@@ -46,25 +50,20 @@ let let;
 let break;
 let for;
 
-//! ПРИСВОЕНИЯ ПЕРЕМЕННОЙ ЗНАЧЕНИЯ
+//-------------------------------------------
 
-let size;// обьявили переменную
-size = 'XXL';// присвоили значение 
-console.log(size);
-const variable2 = 30;// обьявили и присвоили значение одной строкой
-console.log(variable2);
+//! ОБЪЯВЛЕНИЕ НЕСКОЛЬКИХ ПЕРЕМЕННЫХ
 
-//* обьявление нескольких переменных
 
 // Обьявление переменных одной строкой(неудобно, и невсегда понятно при большом количестве переменных)
-let userApp = 'Local', userAppName = 'Bob', userAppAge = 13;
-console.log(userApp, userAppName, userAppAge);
+let appUser = 'Local', userAppName = 'Bob', userAppAge = 13;
+console.log(appUser, userAppName, userAppAge);
 
 // Обьявление переменных через запятую с новой строки
-let userApp1 = 'Local', 
+let userAppOne = 'Local', 
     userAppName1 = 'Mike', 
     userAppAge1 = 23;
-console.log(userApp1, userAppName1, userAppAge1);
+console.log(userAppOne, userAppName1, userAppAge1);
 
 // Обьявление переменных отдельно
 let userApp2 = 'PC'; 
@@ -79,6 +78,32 @@ userAgeApp = 574;
 console.log(userAgeApp);
 const userCount = userAgeApp;
 console.log(userAgeApp, userCount);
+
+//-------------------------------------------
+
+//! ПРИСВОЕНИЯ ПЕРЕМЕННОЙ ЗНАЧЕНИЯ
+
+let size;// обьявили переменную
+size = 'XXL';// присвоили значение 
+console.log(size);
+const variable2 = 30;// обьявили и присвоили значение одной строкой
+console.log(variable2);
+//-------------------------------------------
+
+//ПЕРЕДАЧА ЗНАЧЕНИЙ ПЕРЕМЕННЫХ
+
+let myAge = 36;
+let myNewAge = 18;
+
+//Копируем значение переменной myNewAge
+//в переменную myAge
+
+myAge = myNewAge;
+console.log(myAge);
+
+
+//-------------------------------------------
+
 /*
 правила переменных
 1. обьявлять их перед использованием
@@ -113,6 +138,55 @@ console.log(typeof y);
 y = true;
 console.log(typeof y);
 console.log(y); // true
+
+//-------------------------------------------
+
+//КЛЮЧЕВОЕ СЛОВО VAR
+
+//Области видимости
+
+
+//Использование переменной до её объявления
+
+
+age = 35;
+console.log(age);
+
+var age;
+
+
+function testBlockLet() {
+	let myAgeLet = 36;
+}
+testBlockLet();
+
+//Переменная НЕ видна за пределами блока
+//console.log(myAgeLet);
+
+function testBlockVar() {
+	var myAgeVar = 36;
+}
+testBlockVar();
+
+//Переменная НЕ видна за пределами блока
+console.log(myAgeVar);
+
+
+
+if (true) {
+	let sizeLet = 50;
+}
+//Переменная НЕ видна за пределами блока
+console.log(sizeLet);
+
+if (true) {
+	var sizeVar = 50;
+}
+//Переменная ВИДНА за пределами блока
+console.log(sizeVar);
+
+
+//-------------------------------------------
 
 //! КОНСТАНТЫ
 
