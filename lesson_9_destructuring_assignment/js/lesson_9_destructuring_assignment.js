@@ -414,7 +414,7 @@ const arrInObjekt = {
         width: 100,
         height: 200
     },
-    items: ["Cake", "Donut"],
+    items: ["значение 1", "значение 2"],
     extra: true
 };
 
