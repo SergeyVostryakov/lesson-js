@@ -34,7 +34,7 @@ const userDateInformation = {
     'leave city': 'Baku',
     'is married': true,
 
-};
+}
 console.table(userDateInformation);
 console.log(userDateInformation);
 console.log();
@@ -194,7 +194,7 @@ console.log(callShortFunction);
 
 // ВЛОЖЕННЫЕ СВОЙСТВА
 
-//! значение само по собе может быть обьектом, иметь гнесколько имен и значений внутри своего значения, называется вложенные свойства
+//! значение само по собе может быть обьектом, иметь несколько имен и значений внутри своего значения, называется вложенные свойства
 const mysculCar = {
     manufacturer: 'ford',
     model: 'Mustang Continental Mark II',
@@ -338,7 +338,7 @@ const car4 = {
         month: 'March',
         volume: 5 
     }
-};
+}
 console.log (car4);//* вывели обьект в консоль
 const car5 = JSON.stringify(car4);//* обьявили через новую переменную 
 console.log (car5);//* вывели в консоль в формате данных строковой записи JSON
