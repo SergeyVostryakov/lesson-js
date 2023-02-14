@@ -15,9 +15,13 @@
 // Синтаксис для классов выглядит так:
 
 /*
-class Название [extends Родитель]  {
+class MyClass {
+   методы класса
   constructor
-  методы
+  method1
+  method2
+  method3
+  ...
 }
 */
 //---------------------------------------------------------
@@ -193,6 +197,38 @@ const reptyle3 = new Reptyle1('cobra','crawling','no limbs');
 console.dir(reptyle3);
 
 //=========================================================
+
+//Геттеры сеттеры, другие сокращения
+
+/*
+Как и в литеральных объектах, в классах можно объявлять вычисляемые свойства, геттеры/сеттеры и т.д.
+Вот пример user.name, реализованного с использованием get/set:
+*/
+
+class UserName {
+
+  constructor(name) {
+    // вызывает сеттер
+    this.name = name;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  set name(value) {
+    if (value.length < 4) {
+      console.log("Имя слишком короткое.");
+      return;
+    }
+    this._name = value;
+  }
+}
+
+let user = new UserName("Иван");
+console.log(user.name); // Иван
+user = new UserName(""); // Имя слишком короткое.
+
 
 /*
 
