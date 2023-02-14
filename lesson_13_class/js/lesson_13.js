@@ -230,7 +230,3 @@ console.log(user.name); // Иван
 user = new UserName(""); // Имя слишком короткое.
 
 
-/*
-
-
-*/
